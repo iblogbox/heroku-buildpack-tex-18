@@ -69,7 +69,7 @@ if [ -f $TEXLIVE_CACHE/PACKAGES-VERSION ] && (( $VERSION == `cat $TEXLIVE_CACHE/
     build-step "Copying TeX Package Files from cache: Package $VERSION"
     cp -R $TEXLIVE_CACHE/* $TEXLIVE_HOME
 else
-    if [ -f "$TEXLIVE_CACHE/VERSION" ]; then
+    if [ -f "$TEXLIVE_CACHE/PACKAGES-VERSION" ]; then
         build-step "Upgrading TeX packages to $VERSION"
     else
         build-step "Fetching TeX packages at $VERSION"
@@ -77,8 +77,8 @@ else
 
     curl $TEXLIVE_PACKAGES_URL -L -s -o - | tar xzf - -C $TEXLIVE_HOME
 
-    # # Make sure the cache is empty
-    rm -rf $TEXLIVE_CACHE/*
+    # Make sure the cache is empty
+    #rm -rf $TEXLIVE_CACHE/*
 
     # Store a copy of it in the cache so it doesn't have to be fetched again
     cp -R $TEXLIVE_HOME/* $TEXLIVE_CACHE
