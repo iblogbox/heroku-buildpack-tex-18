@@ -57,3 +57,78 @@ fi
 
 # Set up the environment for runtimes now that compilation has finished
 echo 'export PATH=$HOME/.texlive/bin/x86_64-linux:$PATH' >> $PROFILE_D
+
+
+##########################################
+###PACKAGES
+##########################################
+TEXLIVE_PACKAGES_URL="https://dl.getdropbox.com/s/ya2np8pbqozgh8j/tex-packages-190M.tar.gz"
+VERSION=1;
+
+if [ -f $TEXLIVE_CACHE/PACKAGES-VERSION ] && (( $VERSION == `cat $TEXLIVE_CACHE/PACKAGES-VERSION` )); then
+    build-step "Copying TeX Package Files from cache: Package $VERSION"
+    cp -R $TEXLIVE_CACHE/* $TEXLIVE_HOME
+else
+    if [ -f "$TEXLIVE_CACHE/VERSION" ]; then
+        build-step "Upgrading TeX packages to $VERSION"
+    else
+        build-step "Fetching TeX packages at $VERSION"
+    fi
+
+    curl $TEXLIVE_PACKAGES_URL -L -s -o - | tar xzf - -C $TEXLIVE_HOME
+
+    # # Make sure the cache is empty
+    rm -rf $TEXLIVE_CACHE/*
+
+    # Store a copy of it in the cache so it doesn't have to be fetched again
+    cp -R $TEXLIVE_HOME/* $TEXLIVE_CACHE
+
+    # Store the version for later
+    echo $VERSION > $TEXLIVE_CACHE/PACKAGES-VERSION
+
+    build-step "Saved Version #: Package $VERSION"
+fi
+
+build-step "Setting Up Package Configuration : Buildling KPathSea Database"
+mktexlsr
+build-step "Creating Font Mappings"
+updmap
+updmap --enable Map libertine.map
+updmap --enable Map esint.map 
+updmap --enable Map cm-super-t1.map
+updmap --enable Map fourier.map 
+updmap --enable Map plother.map
+updmap --enable Map pltext.map
+updmap --enable Map txfonts.map
+updmap --enable Map cm-super-ts1.map
+updmap --enable Map marvosym.map
+updmap --enable Map rsfs.map
+updmap --enable Map stmaryrd.map
+updmap --enable Map xypic.map
+updmap --enable Map yhmath.map
+updmap --enable Map bera.map
+updmap --enable Map mdbch.map
+updmap --enable Map vnrtext.map
+updmap --enable Map pxfonts.map
+updmap --enable Map dstroke.map
+updmap --enable Map eurosym.map
+updmap --enable Map wasy.map
+updmap --enable Map hfbright.map
+updmap --enable Map lm.map
+updmap --enable Map arev.map
+updmap --enable Map MnSymbol.map
+updmap --enable Map kpfonts.map
+updmap --enable Map EBGaramond.map
+updmap --enable Map EBGaramond-Maths.map
+updmap --enable Map fdsymbol.map
+updmap --enable Map merriweather.map
+updmap --enable Map qhv.map
+updmap --enable Map SourceSansPro.map
+updmap --enable Map sansmathaccent.map
+updmap --enable Map kurier.map
+updmap --enable Map qbk.map
+
+build-step "Formatting and Compiling Packages"
+fmtutil --all
+build-step "Generating Package Hash"
+texhash
