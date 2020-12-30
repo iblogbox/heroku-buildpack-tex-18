@@ -9,7 +9,7 @@ BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 #VERSION=`curl $TEXLIVE_DOMAIN/VERSION -s`
 #TEXLIVE_URL="$TEXLIVE_DOMAIN/texlive-$VERSION.tar.gz"
 
-VERSION=2015-5
+VERSION=2015-6
 #TEXLIVE_URL="https://storage.googleapis.com/app0124/cdn/texlive-2015-1.tar.gz"
 TEXLIVE_URL="https://storage.googleapis.com/app0124/cdn/texlive-2019-1.tar.gz"
 
@@ -71,7 +71,7 @@ echo 'export PATH=$HOME/.texlive/bin/x86_64-linux:$PATH' >> $PROFILE_D
 ##########################################
 #TEXLIVE_PACKAGES_URL="https://storage.googleapis.com/app0124/cdn/tex-packages-190M.tar.gz"
 TEXLIVE_PACKAGES_URL="https://storage.googleapis.com/app0124/cdn/tex-packages-150M.tar.gz"
-VERSION=5;
+VERSION=6;
 
 if [ -f $TEXLIVE_CACHE/PACKAGES-VERSION ] && (( $VERSION == `cat $TEXLIVE_CACHE/PACKAGES-VERSION` )); then
     build-step "Copying TeX Package Files from cache: Package $VERSION"
