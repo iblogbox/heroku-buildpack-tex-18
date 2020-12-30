@@ -9,9 +9,10 @@ BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 #VERSION=`curl $TEXLIVE_DOMAIN/VERSION -s`
 #TEXLIVE_URL="$TEXLIVE_DOMAIN/texlive-$VERSION.tar.gz"
 
-VERSION=2015-2
+VERSION=2015-1
 #TEXLIVE_URL="https://storage.googleapis.com/app0124/cdn/texlive-2015-1.tar.gz"
-TEXLIVE_URL="https://storage.googleapis.com/app0124/cdn/texlive-2017-1.tar.gz"
+TEXLIVE_URL="https://storage.googleapis.com/app0124/cdn/texlive-2016-1.tar.gz"
+#TEXLIVE_URL="https://storage.googleapis.com/app0124/cdn/texlive-2017-1.tar.gz"
 #TEXLIVE_URL="https://storage.googleapis.com/app0124/cdn/texlive-2019-1.tar.gz"
 
 TEXLIVE_HOME=$BUILD_DIR/.texlive
@@ -47,6 +48,7 @@ else
     #rm -rf $TEXLIVE_HOME/bin/x86_64-linux/luajittex
     rm -rf $TEXLIVE_HOME/tlpkg/texlive.tlpdb.9c27f35f9ff125f027bf1a0cc98bfdde
     rm -rf $TEXLIVE_HOME/tlpkg/texlive.tlpdb.e07e7b306f5d3b72a60b37595122db52
+    rm -rf $TEXLIVE_HOME/tlpkg/texlive.tlpdb.fbd6e8250e9d5f593cf3b198fd0f8369
 
     # Make sure the cache is empty
     rm -rf $TEXLIVE_CACHE/*
@@ -73,7 +75,7 @@ echo 'export PATH=$HOME/.texlive/bin/x86_64-linux:$PATH' >> $PROFILE_D
 ##########################################
 #TEXLIVE_PACKAGES_URL="https://storage.googleapis.com/app0124/cdn/tex-packages-190M.tar.gz"
 TEXLIVE_PACKAGES_URL="https://storage.googleapis.com/app0124/cdn/tex-packages-150M.tar.gz"
-VERSION=2;
+VERSION=1;
 
 if [ -f $TEXLIVE_CACHE/PACKAGES-VERSION ] && (( $VERSION == `cat $TEXLIVE_CACHE/PACKAGES-VERSION` )); then
     build-step "Copying TeX Package Files from cache: Package $VERSION"
