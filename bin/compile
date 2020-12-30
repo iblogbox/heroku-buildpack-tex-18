@@ -100,41 +100,41 @@ fi
 build-step "Setting Up Package Configuration : Buildling KPathSea Database"
 mktexlsr
 build-step "Creating Font Mappings"
-updmap
-updmap --enable Map libertine.map
-updmap --enable Map esint.map 
-updmap --enable Map cm-super-t1.map
-updmap --enable Map fourier.map 
-updmap --enable Map plother.map
-updmap --enable Map pltext.map
-updmap --enable Map txfonts.map
-updmap --enable Map cm-super-ts1.map
-updmap --enable Map marvosym.map
-updmap --enable Map rsfs.map
-updmap --enable Map stmaryrd.map
-updmap --enable Map xypic.map
-updmap --enable Map yhmath.map
-updmap --enable Map bera.map
-updmap --enable Map mdbch.map
-updmap --enable Map vnrtext.map
-updmap --enable Map pxfonts.map
-updmap --enable Map dstroke.map
-updmap --enable Map eurosym.map
-updmap --enable Map wasy.map
-updmap --enable Map hfbright.map
-updmap --enable Map lm.map
-updmap --enable Map arev.map
-updmap --enable Map MnSymbol.map
-updmap --enable Map kpfonts.map
-updmap --enable Map EBGaramond.map
-updmap --enable Map EBGaramond-Maths.map
-updmap --enable Map fdsymbol.map
-updmap --enable Map merriweather.map
-updmap --enable Map qhv.map
-updmap --enable Map SourceSansPro.map
-updmap --enable Map sansmathaccent.map
-updmap --enable Map kurier.map
-updmap --enable Map qbk.map
+updmap-sys
+updmap-sys --enable Map libertine.map
+updmap-sys --enable Map esint.map 
+updmap-sys --enable Map cm-super-t1.map
+updmap-sys --enable Map fourier.map 
+updmap-sys --enable Map plother.map
+updmap-sys --enable Map pltext.map
+updmap-sys --enable Map txfonts.map
+updmap-sys --enable Map cm-super-ts1.map
+updmap-sys --enable Map marvosym.map
+updmap-sys --enable Map rsfs.map
+updmap-sys --enable Map stmaryrd.map
+updmap-sys --enable Map xypic.map
+updmap-sys --enable Map yhmath.map
+updmap-sys --enable Map bera.map
+updmap-sys --enable Map mdbch.map
+updmap-sys --enable Map vnrtext.map
+updmap-sys --enable Map pxfonts.map
+updmap-sys --enable Map dstroke.map
+updmap-sys --enable Map eurosym.map
+updmap-sys --enable Map wasy.map
+updmap-sys --enable Map hfbright.map
+updmap-sys --enable Map lm.map
+updmap-sys --enable Map arev.map
+updmap-sys --enable Map MnSymbol.map
+updmap-sys --enable Map kpfonts.map
+updmap-sys --enable Map EBGaramond.map
+updmap-sys --enable Map EBGaramond-Maths.map
+updmap-sys --enable Map fdsymbol.map
+updmap-sys --enable Map merriweather.map
+updmap-sys --enable Map qhv.map
+updmap-sys --enable Map SourceSansPro.map
+updmap-sys --enable Map sansmathaccent.map
+updmap-sys --enable Map kurier.map
+updmap-sys --enable Map qbk.map
 
 build-step "Formatting and Compiling Packages"
 fmtutil --all
