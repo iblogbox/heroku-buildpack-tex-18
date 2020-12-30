@@ -141,6 +141,7 @@ updmap-sys --enable Map kurier.map
 updmap-sys --enable Map qbk.map
 
 build-step "Formatting and Compiling Packages"
+LANG=C
 fmtutil-sys --all
 build-step "Generating Package Hash"
 texhash
